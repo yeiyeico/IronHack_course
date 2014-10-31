@@ -1,0 +1,84 @@
+have_library: checking for setupterm() in -lncurses... -------------------- yes
+
+"gcc -o conftest -I/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/include/ruby-2.1.0/i686-linux -I/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/include/ruby-2.1.0/ruby/backward -I/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/include/ruby-2.1.0 -I.  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -fPIC conftest.c  -L. -L/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/lib -Wl,-R/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/lib -L. -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/lib -L/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"gcc -o conftest -I/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/include/ruby-2.1.0/i686-linux -I/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/include/ruby-2.1.0/ruby/backward -I/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/include/ruby-2.1.0 -I.  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -fPIC conftest.c  -L. -L/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/lib -Wl,-R/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/lib -L. -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/lib -L/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/lib -lruby -lncurses  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:13:57: error: ‘setupterm’ undeclared (first use in this function)
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:13:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))setupterm; return 0; }
+/* end */
+
+"gcc -o conftest -I/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/include/ruby-2.1.0/i686-linux -I/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/include/ruby-2.1.0/ruby/backward -I/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/include/ruby-2.1.0 -I.  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -fPIC conftest.c  -L. -L/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/lib -Wl,-R/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/lib -L. -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/lib -L/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/lib -lruby -lncurses  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:13:1: warning: implicit declaration of function ‘setupterm’ [-Wimplicit-function-declaration]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { setupterm(); return 0; }
+/* end */
+
+--------------------
+
+have_type: checking for rb_io_t in ruby.h,rubyio.h... -------------------- yes
+
+"gcc -I/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/include/ruby-2.1.0/i686-linux -I/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/include/ruby-2.1.0/ruby/backward -I/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/include/ruby-2.1.0 -I.  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -fPIC   -c conftest.c"
+In file included from conftest.c:4:0:
+/home/vagrant/.rvm/rubies/ruby-2.1.0-preview1/include/ruby-2.1.0/ruby/backward/rubyio.h:2:2: warning: #warning use "ruby/io.h" instead of "rubyio.h" [-Wcpp]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby.h>
+4: #include <rubyio.h>
+5: 
+6: /*top*/
+7: typedef rb_io_t conftest_type;
+8: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+extconf.h is:
+/* begin */
+1: #ifndef EXTCONF_H
+2: #define EXTCONF_H
+3: #define HAVE_TYPE_RB_IO_T 1
+4: #endif
+/* end */
+
