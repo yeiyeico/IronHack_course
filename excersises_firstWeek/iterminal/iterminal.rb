@@ -17,6 +17,7 @@ class Iterminal
 
 	def manage_slides
 		end_slide = false
+		
 		while !end_slide
 			@show_to_screen.show(@lines[@line_position])
 			input = @show_to_screen.user_input
@@ -69,6 +70,6 @@ class ConsoleManager
 	end
 end
 
-runIterminal = Iterminal.new("iTerminalAdvance.txt")
+runIterminal = Iterminal.new("iterminal.txt")
 
 runIterminal.start_iterminal
