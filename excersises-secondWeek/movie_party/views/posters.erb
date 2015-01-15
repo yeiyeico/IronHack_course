@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MOVIE PARTY</title>
+</head>
+
+<body>
+	<h2>Which of the movies was filmed in year <%= @random_year %> ?</h2>
+	
+	<div>
+		<% @posters.each do |img_poster| %>
+			<%if @random_poster == img_poster %>
+				<a href="#" onclick="alert('YEAHHHH!!!')">
+					<img src="<%= img_poster %>" height="250" witdh = "250"/>
+				</a>
+			<%else%>
+				<a href="#" onclick="alert('NAAAAA!!')">
+					<img src="<%= img_poster %>" height="250" witdh = "250"/>
+				</a>
+			<% end %>
+		<% end %> 
+	</div> 
+  	<a href='/'>make another search</a>
+</body>
+
+</html>

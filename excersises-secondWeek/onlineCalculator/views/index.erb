@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>sinatra_calculator</title>
+</head>
+<body>
+    <form action="/result" method="POST">
+        <label for="name">First number:</label>
+        <input type="text" name="first_number" placeholder="first number"/>
+        <label for="select_operator">Select Operation:</label>
+        <select name="select_operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <label for="name">Second number:</label>
+        <input type="text" id="second_number" name="second_number" placeholder="second number"/>
+        <input type="submit" value="result" />
+    </form>
+    <a href="/counting">Counting numbers</a>
+</body>
+</html>
+
