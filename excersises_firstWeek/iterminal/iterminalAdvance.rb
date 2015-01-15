@@ -6,24 +6,29 @@ require 'terminfo'
 class Iterminal
 	def initialize(file_reader)
 		@file_reader = FileReader.new(file_reader)
-		@show_to_screen = ConsoleManager.new
 	end
 
 	def start_iterminal
-		@line_position = 0
 		@lines = @file_reader.split_txt
-		manage_slides
+		slides = []
+		@lines.each do |text|
+			slides.push(Slide.new(text))
+		end
+		manage_slides(slides)
 	end
 
-	def manage_slides
+	def manage_slides (slides) 
+		slide_position = 0
 		end_slide = false
+
 		while !end_slide
-			@show_to_screen.show(@lines[@line_position])
-			input = @show_to_screen.user_input
+			@show_slide.show(slides[slide_position])
+			
+			input = ConsoleManager.new.user_input
 			
 			if input == "n"
 				@line_position +=1
-				if @line_position == @lines.size
+				if @line_position == slides.size
 					end_slide = true
 				end
 			end
@@ -42,8 +47,19 @@ class FileReader
 		@file_reader = IO.read(file)
 	end
 
-	def split_txt 
-		lineParts = @file_reader.split("\n----\n")
+	def split_txt
+		@lineParts = @file_reader.split("\n----\n")
+	end	
+end
+
+
+class Slide
+	def initialize(text)
+		@text = text
+	end
+
+	def show_slide
+		@show_slide = ConsoleManager.new
 	end
 end
 
@@ -56,7 +72,7 @@ class ConsoleManager
 		rows = screen_size[0]
 
 		padding_colums = (columns - 30) / 2
-		padding_rows = (rows - 1) / 2
+		padding_rows = (rows - 3) / 2
 		(1..padding_rows).each {puts}
 		(1..padding_colums).each {print " "}
 		print(line)
@@ -68,6 +84,8 @@ class ConsoleManager
 		@user_input = gets.chomp
 	end
 end
+
+
 
 runIterminal = Iterminal.new("iTerminalAdvance.txt")
 

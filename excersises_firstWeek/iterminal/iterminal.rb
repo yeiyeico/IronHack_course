@@ -70,6 +70,6 @@ class ConsoleManager
 	end
 end
 
-runIterminal = Iterminal.new("iterminal.txt")
+runIterminal = Iterminal.new("iTerminal.txt")
 
 runIterminal.start_iterminal
